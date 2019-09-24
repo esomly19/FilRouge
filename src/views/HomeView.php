@@ -6,8 +6,9 @@ final class HomeView extends SuperclassView {
 
     public function render() {
         $this->title .=" - accueil";
-        $this->body .="
-        <H1>ooooooooooooooooooooooooooook</H1>";
+        $this->body .=" 
+        ";
+
         parent::render();
 
     }
