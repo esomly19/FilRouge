@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% block head %}
+            <link rel="stylesheet" href="style.css" />
+            <title>{% block title %}{% endblock %} Dora </title>
+        {% endblock %}
+    </head>
+    <body>
+
+      <div id="header">
+        {% block header %}
+          <h1>  Dora championship turbo oueoueoue (HEADER) </h1>
+        {% endblock %}
+      </div>
+
+        <div id="content">{% block content %}{% endblock %}</div>
+
+        <div id="footer">
+            {% block footer %}
+                Site crée par ...
+                &copy; Copyright (FOOTER)</a>.
+            {% endblock %}
+        </div>
+    </body>
+</html>

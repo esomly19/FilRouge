@@ -1,0 +1,19 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+
+<h1> Création d'un perso </h1>
+
+
+<form action="{{ path_for('perso') }}" method="post">
+  <label for "nom"> Nom </label>
+  <input type="text" name="nom" id="nom">
+</br></br>
+  <label for "vie"> Point de vie </label>
+  <input type="number" name="vie" id="vie">
+</br></br>
+<label for "attaque"> Point d'attaque </label>
+<input type="number" name="attaque" id="attaque">
+</br></br>
+  <input type="submit" value="Créer" />
+{% endblock  %}
