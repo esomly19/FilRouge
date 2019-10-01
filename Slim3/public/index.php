@@ -15,9 +15,10 @@ $app->get('/perso', \App\controllers\pagesController::class . ':getPerso')-> set
 $app->post('/perso', \App\controllers\pagesController::class . ':postPerso');
 // $app->get('/', 'App\Controller\HomeController:index');
 $app->get('/index', \App\controllers\pagesController::class . ':index');
+$app->get('/creer/{id}', \App\controllers\pagesController::class. ':modifier');
 
-
-
+$app->post('/creer/{id}', \App\controllers\pagesController::class. ':creerPerso');
+$app->delete('/creer/{id}', \App\controllers\pagesController::class. ':deletePerso');
 $app->run();
 
 
