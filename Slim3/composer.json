@@ -2,11 +2,15 @@
     "name": "dora/slim3",
     "require": {
         "slim/slim": "^3.12",
-        "slim/twig-view": "^2.5"
+        "slim/twig-view": "^2.5",
+        "illuminate/database": "~5.1"
     },
     "autoload" :{
       "psr-4": {
-        "App\\" : "src/"
+        "App\\" : "src/",
+        "App\\Database\\": "src/Config",
+        "App\\Model\\": "src/Model",
+        "App\\Controller\\": "src/Controller"
       }
     }
 }
