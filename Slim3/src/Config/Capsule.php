@@ -15,8 +15,8 @@ class Capsule extends CapsuleManager
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
 			'database'  => 'helf6u',
-			'username'  => 'root',
-			'password'  => '',
+			'username'  => 'helf6u',
+			'password'  => '0468530az',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => ''

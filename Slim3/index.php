@@ -1,5 +1,5 @@
 <?php
-require '../vendor/autoload.php';
+require './vendor/autoload.php';
 
 $app = new \Slim\App([
     'settings' => [
@@ -8,7 +8,7 @@ $app = new \Slim\App([
     ]
 ]);
 
-require '../src/container.php';
+require './src/container.php';
 new \App\Database\Capsule;
 $app->get('/', \App\controllers\pagesController::class . ':home');
 $app->get('/perso', \App\controllers\pagesController::class . ':getPerso')-> setName('perso');
