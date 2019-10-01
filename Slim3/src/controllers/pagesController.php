@@ -10,7 +10,7 @@ class pagesController {
     public function __construct($container)
     {
       $this->container = $container;
-    }
+    }œ
 
     public function home($request, $response)
     {
