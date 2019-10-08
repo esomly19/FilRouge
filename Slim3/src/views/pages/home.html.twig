@@ -2,11 +2,12 @@
 
 {% block content %}
 
-Go sur la page <a href="{{path_for('perso') }}" > de création de perso </a> ==> MARCHE PAS chez moi à cause de wamp de mort <!-- path_for grâce à setName dans index.php -->
-</br> Go sur la page <a href="http://projetdora/index.php/perso" > de création de perso </a>
+Go sur la page <a href="{{path_for('creation') }}" > de création de perso </a>
+</br>
+Go sur la page pour <a href="{{ path_for('liste') }}"> voir tous les personnages </a>
 <br/><br/>
 ELOQUENT + TWIG : (récupération de la table slim3 (à changer après)) :
-{{utilisateurs}}
+{{personnages}}
 
 <br/>
 

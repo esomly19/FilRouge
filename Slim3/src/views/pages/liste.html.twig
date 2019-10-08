@@ -1,0 +1,28 @@
+{% extends 'layout.html.twig' %}
+
+        {% block stylesheets %}
+            <link href="../../src/views/css/main.css" type="text/css" rel="stylesheet" />
+        {% endblock %}
+
+{% block content %}
+
+Voici les personnages qui sont dans la base de donnée : </br>
+
+
+
+<div class="container">
+    {% for perso in personnages %}
+<form action="{{ path_for('supprimer')}}" method="post">
+    <div class="case"> Nom : {{ perso.nom}} </br>
+    Prenom : {{perso.prenom}} </br>
+    <a href="{{ path_for('detail', { 'id': perso.id }) }}" > En savoir plus </a>
+  </br>
+    <input type="hidden" name="id" id="id" value="{{perso.id}}">
+    <button type="submit"> Supprimer </button>
+
+   </div>
+ </form>
+    {% endfor %}
+</div>
+
+{% endblock %}

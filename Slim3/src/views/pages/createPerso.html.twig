@@ -7,65 +7,36 @@
 
 <!--  path_for('perso')  -->
 
-<form action="{{ utilisateurs.id }}" method="post">
+<form action="{{ personnages.id }}" method="post">
 </br></br>  <label for "nom"> Nom </label>
-  <input type="text" name="nom" id="nom" value="{{utilisateurs.nom}}">
+  <input type="text" name="nom" id="nom" value="{{personnages.nom}}">
 </br></br>
   <label for "prenom"> Prenom </label>
-  <input type="text" name="prenom" id="prenom" value="{{utilisateurs.prenom}}">
+  <input type="text" name="prenom" id="prenom" value="{{personnages.prenom}}">
 </br></br>
 <label for "taille"> Taille </label>
-<input type="number" name="taille" id="taille" value="{{utilisateurs.taille}}">
+<input type="number" name="taille" id="taille" value="{{personnages.taille}}">
 </br></br>
 <label for "poids"> Poids </label>
-<input type="number" name="poids" id="poids" value="{{utilisateurs.poids}}">
+<input type="number" name="poids" id="poids" value="{{personnages.poids}}">
 </br></br>
   <label for "vie"> Point de vie </label>
-  <input type="number" name="vie" id="vie" value="{{utilisateurs.vie}}">
+  <input type="number" name="vie" id="vie" value="{{personnages.vie}}">
 </br></br>
 <label for "defense"> Point de défense </label>
-<input type="number" name="defense" id="defense" value="{{utilisateurs.defense}}">
+<input type="number" name="defense" id="defense" value="{{personnages.defense}}">
 </br></br>
 <label for "attaque"> Point d'attaque </label>
-<input type="number" name="attaque" id="attaque" value="{{utilisateurs.attaque}}">
+<input type="number" name="attaque" id="attaque" value="{{personnages.attaque}}">
 </br></br>
 <label for "agilite"> Point d'agilité </label>
-<input type="number" name="agilite" id="agilite" value="{{utilisateurs.agilite}}">
+<input type="number" name="agilite" id="agilite" value="{{personnages.agilite}}">
 </br></br>
 <label for "photo"> Photo </label>
-<input type="text" name="photo" id="photo" value="{{utilisateurs.photo}}">
+<input type="text" name="photo" id="photo" value="{{personnages.photo}}">
 </br></br>
 <button type="submit" > Valider </button>
 </form>
 
-<form action="{{ utilisateurs.id }}" method="delete">
-</br></br>  <label for "nom"> Nom </label>
-  <input type="text" name="nom" id="nom" value="{{utilisateurs.nom}}">
-</br></br>
-  <label for "prenom"> Prenom </label>
-  <input type="text" name="prenom" id="prenom" value="{{utilisateurs.prenom}}">
-</br></br>
-<label for "taille"> Taille </label>
-<input type="number" name="taille" id="taille" value="{{utilisateurs.taille}}">
-</br></br>
-<label for "poids"> Poids </label>
-<input type="number" name="poids" id="poids" value="{{utilisateurs.poids}}">
-</br></br>
-  <label for "vie"> Point de vie </label>
-  <input type="number" name="vie" id="vie" value="{{utilisateurs.vie}}">
-</br></br>
-<label for "defense"> Point de défense </label>
-<input type="number" name="defense" id="defense" value="{{utilisateurs.defense}}">
-</br></br>
-<label for "attaque"> Point d'attaque </label>
-<input type="number" name="attaque" id="attaque" value="{{utilisateurs.attaque}}">
-</br></br>
-<label for "agilite"> Point d'agilité </label>
-<input type="number" name="agilite" id="agilite" value="{{utilisateurs.agilite}}">
-</br></br>
-<label for "photo"> Photo </label>
-<input type="text" name="photo" id="photo" value="{{utilisateurs.photo}}">
-</br></br>
-<button type="submit"> Supprimer </button>
-</form>
+
 {% endblock  %}

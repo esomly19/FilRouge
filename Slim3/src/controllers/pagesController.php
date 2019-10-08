@@ -3,7 +3,7 @@
 namespace App\controllers;
 
 use App\Database;
-use App\Model\Users;
+use App\Model\personnage;
 
 class pagesController {
 
@@ -17,52 +17,72 @@ class pagesController {
       $this->container->view->render($response, 'pages/home.html.twig');
     }
 
-    public function getPerso($request, $response)
+// ---------------- Voir tous les persos -------------------
+    public function liste($request, $response, $args)
     {
-      $this->container->view->render($response, 'pages/createPerso.html.twig');
+      $perso = Personnage::all();
+      $this->container->view->render($response, 'pages/liste.html.twig', ['personnages'=>$perso]);
     }
 
-    public function postPerso($request, $response)
+// -------------- Voir détail d'un perso ---------------------
+    public function detail($request, $response, $args)
     {
-      var_dump($request->getParams());
-      $this->container->view->render($response, 'pages/createPerso.html.twig');
+      $perso = Personnage::find(intVal($args['id']));
+      $this->container->view->render($response, 'pages/detail.html.twig', ['personnages'=>$perso]);
+    }
+
+// ------------- Supprime un perso -------------------------
+    public function supprimer($request, $response, $args){
+      $perso = Personnage::find($_POST["id"]);
+      //var_dump(Personnage::find(intVal($args['id'])));
+      $perso->delete();
+      $perso = Personnage::all();
+      $this->container->view->render($response, 'pages/liste.html.twig', ['personnages'=>$perso]);
     }
 
 
-    function index($request, $response, $args)
-    {
-  //  $user = Users::find(1);
-    $user = Users::all();
-    $this->container->view->render($response, 'pages/home.html.twig', ['utilisateurs'=>$user]);
-  //  $response->write($user->nom);
+
+    public function creer($request, $response, $args){
+    //  $perso = Users::find(intVal($args['id']));
+      $this->container->view->render($response, 'pages/createPerso.html.twig');
     }
 
     public function modifier($request, $response, $args){
-      $user = Users::find(intVal($args['id']));
-      $this->container->view->render($response, 'pages/createPerso.html.twig', ['utilisateurs'=>$user]);
+      $perso = Personnage::find(intVal($args['id']));
+      $this->container->view->render($response, 'pages/createPerso.html.twig', ['personnages'=>$perso]);
     }
 
-    public function deletePerso($request, $response, $args){
-      $id = $args['id'];
-      $user = Users::find($id);
-      $this->container->view->render($response, 'pages/createPerso.html.twig', ['utilisateurs'=>$user]);
+    public  function updatePerso($request, $response, $args)
+    {
+      $perso = Personnage::find(intVal($args['id']));
+      $perso->prenom = $_POST["prenom"];
+      $perso->nom = $_POST["nom"];
+      $perso->poids = $_POST["poids"];
+      $perso->taille = $_POST["taille"];
+      $perso->vie = $_POST["vie"];
+      $perso->attaque = $_POST["attaque"];
+      $perso->defense = $_POST["defense"];
+      $perso->agilite = $_POST["agilite"];
+      $perso->photo = $_POST["photo"];
+      $perso->save();
+      $this->container->view->render($response, 'pages/home.html.twig', ['personnages'=>$perso]);
     }
 
     public  function creerPerso($request, $response, $args)
     {
-  /*    $user = Users::find(intVal($_POST["id"]));*/
-      $user = new Users();
-      $user->prenom = $_POST["prenom"];
-      $user->nom = $_POST["nom"];
-      $user->poids = $_POST["poids"];
-      $user->taille = $_POST["taille"];
-      $user->vie = $_POST["vie"];
-      $user->attaque = $_POST["attaque"];
-      $user->defense = $_POST["defense"];
-      $user->agilite = $_POST["agilite"];
-      $user->photo = $_POST["photo"];
-      $user->save();
-      $this->container->view->render($response, 'pages/createPerso.html.twig', ['utilisateurs'=>$user]);
+  /*    $perso = Users::find(intVal($_POST["id"]));*/
+      $perso = new Personnage();
+      $perso->prenom = $_POST["prenom"];
+      $perso->nom = $_POST["nom"];
+      $perso->poids = $_POST["poids"];
+      $perso->taille = $_POST["taille"];
+      $perso->vie = $_POST["vie"];
+      $perso->attaque = $_POST["attaque"];
+      $perso->defense = $_POST["defense"];
+      $perso->agilite = $_POST["agilite"];
+      $perso->photo = $_POST["photo"];
+      $perso->save();
+      $this->container->view->render($response, 'pages/home.html.twig', ['personnages'=>$perso]);
     }
 }
 
