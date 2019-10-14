@@ -19,7 +19,7 @@ class SqlServerGrammar extends Grammar
      *
      * @var array
      */
-    protected $modifiers = ['Increment', 'Collate', 'Nullable', 'Default', 'Persisted'];
+    protected $modifiers = ['Increment', 'Collate', 'Nullable', 'Default'];
 
     /**
      * The columns available as serials.
@@ -278,21 +278,6 @@ class SqlServerGrammar extends Grammar
     }
 
     /**
-     * Compile a rename index command.
-     *
-     * @param  \Illuminate\Database\Schema\Blueprint $blueprint
-     * @param  \Illuminate\Support\Fluent $command
-     * @return string
-     */
-    public function compileRenameIndex(Blueprint $blueprint, Fluent $command)
-    {
-        return sprintf("sp_rename N'%s', %s, N'INDEX'",
-            $this->wrap($blueprint->getTable().'.'.$command->from),
-            $this->wrap($command->to)
-        );
-    }
-
-    /**
      * Compile the command to enable foreign key constraints.
      *
      * @return string
@@ -310,21 +295,6 @@ class SqlServerGrammar extends Grammar
     public function compileDisableForeignKeyConstraints()
     {
         return 'EXEC sp_msforeachtable "ALTER TABLE ? NOCHECK CONSTRAINT all";';
-    }
-
-    /**
-     * Compile the command to drop all foreign keys.
-     *
-     * @return string
-     */
-    public function compileDropAllForeignKeys()
-    {
-        return "DECLARE @sql NVARCHAR(MAX) = N'';
-            SELECT @sql += 'ALTER TABLE ' + QUOTENAME(OBJECT_NAME(parent_object_id)) 
-                + ' DROP CONSTRAINT ' + QUOTENAME(name) + ';'
-            FROM sys.foreign_keys;
-            
-            EXEC sp_executesql @sql;";
     }
 
     /**
@@ -482,18 +452,14 @@ class SqlServerGrammar extends Grammar
     }
 
     /**
-     * Create the column definition for an enumeration type.
+     * Create the column definition for an enum type.
      *
      * @param  \Illuminate\Support\Fluent  $column
      * @return string
      */
     protected function typeEnum(Fluent $column)
     {
-        return sprintf(
-            'nvarchar(255) check ("%s" in (%s))',
-            $column->name,
-            $this->quoteString($column->allowed)
-        );
+        return 'nvarchar(255)';
     }
 
     /**
@@ -537,7 +503,7 @@ class SqlServerGrammar extends Grammar
      */
     protected function typeDateTime(Fluent $column)
     {
-        return $this->typeTimestamp($column);
+        return $column->precision ? "datetime2($column->precision)" : 'datetime';
     }
 
     /**
@@ -548,7 +514,7 @@ class SqlServerGrammar extends Grammar
      */
     protected function typeDateTimeTz(Fluent $column)
     {
-        return $this->typeTimestampTz($column);
+        return $column->precision ? "datetimeoffset($column->precision)" : 'datetimeoffset';
     }
 
     /**
@@ -596,9 +562,13 @@ class SqlServerGrammar extends Grammar
      */
     protected function typeTimestampTz(Fluent $column)
     {
-        $columnType = $column->precision ? "datetimeoffset($column->precision)" : 'datetimeoffset';
+        if ($column->useCurrent) {
+            $columnType = $column->precision ? "datetimeoffset($column->precision)" : 'datetimeoffset';
 
-        return $column->useCurrent ? "$columnType default CURRENT_TIMESTAMP" : $columnType;
+            return "$columnType default CURRENT_TIMESTAMP";
+        }
+
+        return "datetimeoffset($column->precision)";
     }
 
     /**
@@ -745,17 +715,6 @@ class SqlServerGrammar extends Grammar
     }
 
     /**
-     * Create the column definition for a generated, computed column type.
-     *
-     * @param  \Illuminate\Support\Fluent  $column
-     * @return string|null
-     */
-    protected function typeComputed(Fluent $column)
-    {
-        return "as ({$column->expression})";
-    }
-
-    /**
      * Get the SQL for a collation column modifier.
      *
      * @param  \Illuminate\Database\Schema\Blueprint  $blueprint
@@ -778,9 +737,7 @@ class SqlServerGrammar extends Grammar
      */
     protected function modifyNullable(Blueprint $blueprint, Fluent $column)
     {
-        if ($column->type !== 'computed') {
-            return $column->nullable ? ' null' : ' not null';
-        }
+        return $column->nullable ? ' null' : ' not null';
     }
 
     /**
@@ -812,20 +769,6 @@ class SqlServerGrammar extends Grammar
     }
 
     /**
-     * Get the SQL for a generated stored column modifier.
-     *
-     * @param  \Illuminate\Database\Schema\Blueprint  $blueprint
-     * @param  \Illuminate\Support\Fluent  $column
-     * @return string|null
-     */
-    protected function modifyPersisted(Blueprint $blueprint, Fluent $column)
-    {
-        if ($column->persisted) {
-            return ' persisted';
-        }
-    }
-
-    /**
      * Wrap a table in keyword identifiers.
      *
      * @param  \Illuminate\Database\Query\Expression|string  $table
@@ -838,20 +781,5 @@ class SqlServerGrammar extends Grammar
         }
 
         return parent::wrapTable($table);
-    }
-
-    /**
-     * Quote the given string literal.
-     *
-     * @param  string|array  $value
-     * @return string
-     */
-    public function quoteString($value)
-    {
-        if (is_array($value)) {
-            return implode(', ', array_map([$this, __FUNCTION__], $value));
-        }
-
-        return "N'$value'";
     }
 }

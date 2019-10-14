@@ -7,6 +7,7 @@ final class HomeView extends SuperclassView {
     public function render() {
         $this->title .=" - accueil";
         $this->body .=" 
+            le salam frere
         ";
 
         parent::render();

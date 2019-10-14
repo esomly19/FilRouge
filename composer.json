@@ -1,0 +1,14 @@
+{
+    "require": {
+        "slim/slim": "^3.12",
+        "illuminate/database": "5.5.*",
+	"php": ">=7.0",
+        "slim/twig-view":"^2.5"
+
+    },
+    "autoload" :{
+      "psr-4": {
+        "Super_Street_Dora_Grand_Championship_Turbo\\" : "src/"
+      }
+    }
+}

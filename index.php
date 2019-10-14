@@ -32,7 +32,8 @@ $container = array();
 $container["settings"]=$config;
 
 $container['view'] = function ($container){
-
+ courrier concernant votre candidature à la formation 'LP Administration des systèmes réseaux et applications à base de logiciels libres (Formation initiale ou en alternance)'
+Vous pouvez également vous connecter à votre espace personnel afin de visualiser votre 
     $view = new \Slim\views\Twig('/views',[]);
 
     $router = $container->get('router');

@@ -2,8 +2,6 @@
 
 namespace Illuminate\Database\Eloquent\Concerns;
 
-use Illuminate\Support\Arr;
-use InvalidArgumentException;
 use Illuminate\Contracts\Events\Dispatcher;
 
 trait HasEvents
@@ -27,63 +25,25 @@ trait HasEvents
     protected $observables = [];
 
     /**
-     * Register observers with the model.
+     * Register an observer with the Model.
      *
-     * @param  object|array|string  $classes
+     * @param  object|string  $class
      * @return void
-     *
-     * @throws \RuntimeException
      */
-    public static function observe($classes)
+    public static function observe($class)
     {
         $instance = new static;
 
-        foreach (Arr::wrap($classes) as $class) {
-            $instance->registerObserver($class);
-        }
-    }
-
-    /**
-     * Register a single observer with the model.
-     *
-     * @param  object|string $class
-     * @return void
-     *
-     * @throws \RuntimeException
-     */
-    protected function registerObserver($class)
-    {
-        $className = $this->resolveObserverClassName($class);
+        $className = is_string($class) ? $class : get_class($class);
 
         // When registering a model observer, we will spin through the possible events
         // and determine if this observer has that method. If it does, we will hook
         // it into the model's event system, making it convenient to watch these.
-        foreach ($this->getObservableEvents() as $event) {
+        foreach ($instance->getObservableEvents() as $event) {
             if (method_exists($class, $event)) {
                 static::registerModelEvent($event, $className.'@'.$event);
             }
         }
-    }
-
-    /**
-     * Resolve the observer's class name from an object or string.
-     *
-     * @param  object|string $class
-     * @return string
-     *
-     * @throws \InvalidArgumentException
-     */
-    private function resolveObserverClassName($class)
-    {
-        if (is_object($class)) {
-            return get_class($class);
-        }
-
-        if (class_exists($class)) {
-            return $class;
-        }
-
-        throw new InvalidArgumentException('Unable to find observer: '.$class);
     }
 
     /**
@@ -95,9 +55,9 @@ trait HasEvents
     {
         return array_merge(
             [
-                'retrieved', 'creating', 'created', 'updating', 'updated',
-                'saving', 'saved', 'restoring', 'restored', 'replicating',
-                'deleting', 'deleted', 'forceDeleted',
+                'retrieved', 'creating', 'created', 'updating',
+                'updated', 'deleting', 'deleted', 'saving',
+                'saved', 'restoring', 'restored',
             ],
             $this->observables
         );
@@ -174,7 +134,7 @@ trait HasEvents
         // First, we will get the proper method to call on the event dispatcher, and then we
         // will attempt to fire a custom, object based event for the given event. If that
         // returns a result we can return that result, or we'll call the string events.
-        $method = $halt ? 'until' : 'dispatch';
+        $method = $halt ? 'until' : 'fire';
 
         $result = $this->filterModelEventResults(
             $this->fireCustomModelEvent($event, $method)
@@ -304,17 +264,6 @@ trait HasEvents
     }
 
     /**
-     * Register a replicating model event with the dispatcher.
-     *
-     * @param  \Closure|string  $callback
-     * @return void
-     */
-    public static function replicating($callback)
-    {
-        static::registerModelEvent('replicating', $callback);
-    }
-
-    /**
      * Register a deleting model event with the dispatcher.
      *
      * @param  \Closure|string  $callback
@@ -387,26 +336,5 @@ trait HasEvents
     public static function unsetEventDispatcher()
     {
         static::$dispatcher = null;
-    }
-
-    /**
-     * Execute a callback without firing any model events for any model type.
-     *
-     * @param  callable  $callback
-     * @return mixed
-     */
-    public static function withoutEvents(callable $callback)
-    {
-        $dispatcher = static::getEventDispatcher();
-
-        static::unsetEventDispatcher();
-
-        try {
-            return $callback();
-        } finally {
-            if ($dispatcher) {
-                static::setEventDispatcher($dispatcher);
-            }
-        }
     }
 }
