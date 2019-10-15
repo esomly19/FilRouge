@@ -30,8 +30,14 @@ class pagesController {
     public function detail($request, $response, $args)
     {
       $perso = Personnage::find(intVal($args['id']));
+      $this->container->view->render($response, 'pages/detail.html.twig', ['personnages'=>$perso]);
+    }
+
+    // -------------- Voir détail d'un monstre ---------------------
+    public function detailm($request, $response, $args)
+    {
       $monstre = Monsters::find(intVal($args['id']));
-      $this->container->view->render($response, 'pages/detail.html.twig', ['personnages'=>$perso, 'monstres'=>$monstre]);
+      $this->container->view->render($response, 'pages/detailm.html.twig', ['monstres'=>$monstre]);
     }
 
 // ------------- Supprime un perso -------------------------
@@ -40,7 +46,17 @@ class pagesController {
       //var_dump(Personnage::find(intVal($args['id'])));
       $perso->delete();
       $perso = Personnage::all();
-      $monstre = Monsters::all(); 
+      $monstre = Monsters::all();
+      $this->container->view->render($response, 'pages/liste.html.twig', ['personnages'=>$perso, 'monstres'=>$monstre]);
+    }
+
+    // ------------- Supprime un monstre -------------------------
+    public function supprimerm($request, $response, $args){
+      $monstre = Monsters::find($_POST["id"]);
+      //var_dump(Personnage::find(intVal($args['id'])));
+      $monstre->delete();
+      $perso = Personnage::all();
+      $monstre = Monsters::all();
       $this->container->view->render($response, 'pages/liste.html.twig', ['personnages'=>$perso, 'monstres'=>$monstre]);
     }
 
@@ -67,8 +83,9 @@ class pagesController {
       $perso->agilite = $_POST["agilite"];
       $perso->photo = $_POST["photo"];
       $perso->save();
+      $monstre = Monsters::all();   
       $perso = Personnage::all();
-      $this->container->view->render($response, 'pages/liste.html.twig', ['personnages'=>$perso]);
+      $this->container->view->render($response, 'pages/liste.html.twig', ['personnages'=>$perso,'monstres'=>$monstre]);
     }
 
     // ----------- Créer un perso -----------------------
@@ -93,13 +110,14 @@ class pagesController {
         $monstre->agilite = $_POST["agilite"];
         $monstre->photo = $_POST["photo"];
         $monstre->save();
+        $perso = Personnage::all(); 
         $monstre = Monsters::all();
-        $this->container->view->render($response, 'pages/liste.html.twig', ['Monsters'=>$monstre]);
+        $this->container->view->render($response, 'pages/liste.html.twig', ['personnages'=>$perso, 'monstres'=>$monstre]);
       }
 
     // ----------- Modifie un perso -----------------------
 
-    public function modifier($request, $response, $args){
+    public function modifperso($request, $response, $args){
       $perso = Personnage::find(intVal($args['id']));
       $this->container->view->render($response, 'pages/updatePerso.html.twig', ['personnages'=>$perso]);
     }
@@ -118,7 +136,33 @@ class pagesController {
       $perso->photo = $_POST["photo"];
       $perso->save();
       $perso = Personnage::all();
-      $this->container->view->render($response, 'pages/liste.html.twig', ['personnages'=>$perso]);
+      $monstre = Monsters::all();
+      $this->container->view->render($response, 'pages/liste.html.twig', ['personnages'=>$perso, 'monstres'=>$monstre ]);
+    }
+
+    
+    // ----------- Modifie un monstre -----------------------
+
+    public function modifierm($request, $response, $args){
+      $monstre = Monsters::find(intVal($args['id']));
+      $this->container->view->render($response, 'pages/updateMonstre.html.twig', ['monstres'=>$monstre]);
+    }
+
+    public  function updateMonstre($request, $response, $args)
+    {
+      $monstre = Monsters::find(intVal($args['id']));
+      $monstre->nom = $_POST["nom"];
+      $monstre->poids = $_POST["poids"];
+      $monstre->taille = $_POST["taille"];
+      $monstre->vie = $_POST["vie"];
+      $monstre->attaque = $_POST["attaque"];
+      $monstre->defense = $_POST["defense"];
+      $monstre->agilite = $_POST["agilite"];
+      $monstre->photo = $_POST["photo"];
+      $monstre->save();
+      $perso = Personnage::all();
+      $monstre = Monsters::all();
+      $this->container->view->render($response, 'pages/liste.html.twig', ['personnages'=>$perso, 'monstres'=>$monstre ]);
     }
 
 }

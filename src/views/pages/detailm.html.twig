@@ -1,0 +1,31 @@
+{% extends 'layout.html.twig' %}
+
+{% block stylesheets %}
+    <link href="../../../src/views/css/main.css" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block content %}
+
+<label for "nom"> ID :</label>
+{{monstres.id}}
+</br>
+<label for "nom"> Nom : </label>
+{{monstres.nom}}
+</br>
+<label for "nom"> Attaque :</label>
+{{monstres.attaque}}
+</br>
+<label for "nom"> Agilite :</label>
+{{monstres.agilite}}
+</br>
+<label for "nom"> Vie :</label>
+{{monstres.vie}} 
+</br>
+<label for "nom"> Defense :</label>
+{{monstres.defense}}
+
+
+<br/>
+
+
+{% endblock  %}
