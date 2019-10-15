@@ -30,7 +30,8 @@ class pagesController {
     public function detail($request, $response, $args)
     {
       $perso = Personnage::find(intVal($args['id']));
-      $this->container->view->render($response, 'pages/detail.html.twig', ['personnages'=>$perso]);
+      $monstre = Monsters::find(intVal($args['id']));
+      $this->container->view->render($response, 'pages/detail.html.twig', ['personnages'=>$perso, 'monstres'=>$monstre]);
     }
 
 // ------------- Supprime un perso -------------------------
@@ -39,7 +40,8 @@ class pagesController {
       //var_dump(Personnage::find(intVal($args['id'])));
       $perso->delete();
       $perso = Personnage::all();
-      $this->container->view->render($response, 'pages/liste.html.twig', ['personnages'=>$perso]);
+      $monstre = Monsters::all(); 
+      $this->container->view->render($response, 'pages/liste.html.twig', ['personnages'=>$perso, 'monstres'=>$monstre]);
     }
 
 // ----------- Créer un perso -----------------------
