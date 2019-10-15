@@ -16,6 +16,10 @@ $app->get('/', \App\controllers\pagesController::class . ':home')->setName('home
 $app->get('/creer', \App\controllers\pagesController::class. ':creer')->setName('creation');
 $app->post('/creer', \App\controllers\pagesController::class. ':creerPerso');
 
+// CRÉATION Monstres
+$app->get('/creerM', \App\controllers\pagesController::class. ':creerM')->setName('monstres');
+$app->post('/creerM', \App\controllers\pagesController::class. ':creerMonstre');
+
 // VOIR TOUS LES PERSOS
 $app->get('/liste', \App\controllers\pagesController::class. ':liste')->setName('liste');
 
