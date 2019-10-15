@@ -19,17 +19,17 @@ $app->post('/creer', \App\controllers\pagesController::class. ':creerPerso');
 // VOIR TOUS LES PERSOS
 $app->get('/liste', \App\controllers\pagesController::class. ':liste')->setName('liste');
 
-// VOIR DETAIL D'UN PERSO
+// VOIR DETAIL D'UN PERSO     
 $app->get('/detail/{id}', \App\controllers\pagesController::class. ':detail')->setName('detail');
 
 // SUPPRIMER UN PERSO
 $app->post('/liste', \App\controllers\pagesController::class. ':supprimer')->setName('supprimer');
 
 // MODIFIER UN PERSO
-$app->get('/modifier/{id}', \App\controllers\pagesController::class. ':modifier')->setName('modifier');
-$app->post('/modifier/{id}', \App\controllers\pagesController::class. ':updatePerso');
+$app->get('/modifier{id}', \App\controllers\pagesController::class. ':modifier')->setName('modifier');
+$app->post('/modifier{id}', \App\controllers\pagesController::class. ':updatePerso');
 
-$app->get('/accueil', \App\controllers\loginController::class . ':accueil');
+$app->get('/accueil', \App\controllers\loginController::class . ':accueil')->setName('connexion');
 
 $app->get('/login', \App\controllers\loginController::class . ':seConnecter')-> setName('login');
 $app->post('/login', \App\controllers\loginController::class . ':seConnecter');
