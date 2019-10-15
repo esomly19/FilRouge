@@ -26,6 +26,22 @@ Voici les personnages qui sont dans la base de donnée : </br>
  </form>
 
     {% endfor %}
+
+    <div class="container2">
+    {% for monstre in monstres %}
+<form action="{{ path_for('supprimer')}}" method="post">
+    <div class="case"> Nom : {{ monstre.nom}} </br>
+    <a href="{{ path_for('detail', { 'id': monstre.id }) }}" > En savoir plus </a>
+  </br>
+    <a href="{{ path_for('modifier', { 'id': monstre.id }) }}" > Le modifier </a>
+  </br>
+    <input type="hidden" name="id" id="id" value="{{monstre.id}}">
+    <button type="submit"> Supprimer </button>
+
+   </div>
+ </form>
+
+    {% endfor %}
 </div>
 
 {% endblock %}

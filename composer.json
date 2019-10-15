@@ -12,5 +12,7 @@
         "App\\Model\\": "src/Model",
         "App\\Controller\\": "src/Controller"
       }
+    },
+    "require-dev": {
     }
 }

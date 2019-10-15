@@ -22,7 +22,8 @@ class pagesController {
     public function liste($request, $response, $args)
     {
       $perso = Personnage::all();
-      $this->container->view->render($response, 'pages/liste.html.twig', ['personnages'=>$perso]);
+      $monstre = Monsters::all();      
+      $this->container->view->render($response, 'pages/liste.html.twig', ['personnages'=>$perso, 'monstres'=>$monstre]);
     }
 
 // -------------- Voir détail d'un perso ---------------------
