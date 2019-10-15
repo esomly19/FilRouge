@@ -11,7 +11,6 @@ return array(
     'Symfony\\Polyfill\\Ctype\\' => array($vendorDir . '/symfony/polyfill-ctype'),
     'Symfony\\Contracts\\Translation\\' => array($vendorDir . '/symfony/translation-contracts'),
     'Symfony\\Component\\Translation\\' => array($vendorDir . '/symfony/translation'),
-    'Super_Street_Dora_Grand_Championship_Turbo\\' => array($baseDir . '/src'),
     'Slim\\Views\\' => array($vendorDir . '/slim/twig-view/src'),
     'Slim\\' => array($vendorDir . '/slim/slim/Slim'),
     'Psr\\SimpleCache\\' => array($vendorDir . '/psr/simple-cache/src'),
@@ -24,5 +23,9 @@ return array(
     'Illuminate\\Container\\' => array($vendorDir . '/illuminate/container'),
     'FastRoute\\' => array($vendorDir . '/nikic/fast-route/src'),
     'Doctrine\\Common\\Inflector\\' => array($vendorDir . '/doctrine/inflector/lib/Doctrine/Common/Inflector'),
+    'App\\Model\\' => array($baseDir . '/src/Model'),
+    'App\\Database\\' => array($baseDir . '/src/Config'),
+    'App\\Controller\\' => array($baseDir . '/src/Controller'),
+    'App\\' => array($baseDir . '/src'),
     '' => array($vendorDir . '/nesbot/carbon/src'),
 );

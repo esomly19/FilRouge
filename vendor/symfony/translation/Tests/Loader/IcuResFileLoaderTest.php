@@ -23,7 +23,7 @@ class IcuResFileLoaderTest extends LocalizedTestCase
     {
         // resource is build using genrb command
         $loader = new IcuResFileLoader();
-        $resource = __DIR__ . '/../fixtures/resourcebundle/res';
+        $resource = __DIR__.'/../fixtures/resourcebundle/res';
         $catalogue = $loader->load($resource, 'en', 'domain1');
 
         $this->assertEquals(['foo' => 'bar'], $catalogue->all('domain1'));
@@ -42,6 +42,6 @@ class IcuResFileLoaderTest extends LocalizedTestCase
     {
         $this->expectException('Symfony\Component\Translation\Exception\InvalidResourceException');
         $loader = new IcuResFileLoader();
-        $loader->load(__DIR__ . '/../fixtures/resourcebundle/corrupted', 'en', 'domain1');
+        $loader->load(__DIR__.'/../fixtures/resourcebundle/corrupted', 'en', 'domain1');
     }
 }

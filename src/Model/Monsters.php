@@ -1,6 +1,8 @@
 <?php
 namespace App\Model;
 use App\Database;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 class Monsters extends \Illuminate\Database\Eloquent\Model {
     
     protected $table = 'ProjetFilRouge_Monstre';
@@ -10,5 +12,5 @@ class Monsters extends \Illuminate\Database\Eloquent\Model {
     function battle(){
         return $this->hasMany('App\Model\Battles','id','monstre');
     }
-    
+
 }
