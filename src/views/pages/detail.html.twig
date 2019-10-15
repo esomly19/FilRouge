@@ -1,0 +1,34 @@
+{% extends 'layout.html.twig' %}
+
+{% block stylesheets %}
+    <link href="../../../src/views/css/main.css" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block content %}
+
+<label for "nom"> ID :</label>
+{{personnages.id}}
+</br>
+<label for "nom"> Nom : </label>
+{{personnages.nom}}
+</br>
+<label for "nom"> Prenom :</label>
+{{personnages.prenom}}
+</br>
+<label for "nom"> Attaque :</label>
+{{personnages.attaque}}
+</br>
+<label for "nom"> Agilite :</label>
+{{personnages.agilite}}
+</br>
+<label for "nom"> Vie :</label>
+{{personnages.vie}}
+</br>
+<label for "nom"> Defense :</label>
+{{personnages.defense}}
+
+
+<br/>
+
+
+{% endblock  %}

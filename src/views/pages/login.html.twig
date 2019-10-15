@@ -1,0 +1,32 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+
+<h1> Connection </h1>
+				
+{#  	{% if $_SESSION['pseudo']%}
+
+	{% else %} 
+	#}
+
+
+				<!--path_for('login') -->
+				<form action="{{path_for('login')}}"method="post">	
+					<div class="form-group">
+						<label for="pseudo">Pseudo</label>
+						<input type="text" name="pseudo"  id="pseudo" value="{{utilisateurs.pseudo}}" required>
+			
+						<label for="mdp">Mot de passe</label>
+						<input type="password" name="mdp" id="mdp" value="{{utilisateurs.mdp}}" required>
+					
+			
+						<button type="submit" >Valider!</button>
+					</div>
+				</form>
+{#{% endif %} #}
+	
+				
+
+{% endblock %}
+
+

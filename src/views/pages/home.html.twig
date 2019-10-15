@@ -1,0 +1,15 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+
+Go sur la page <a href="{{path_for('creation') }}" > de création de perso </a>
+</br>
+Go sur la page pour <a href="{{ path_for('liste') }}"> voir tous les personnages </a>
+<br/><br/>
+ELOQUENT + TWIG : (récupération de la table slim3 (à changer après)) :
+{{personnages}}
+
+<br/>
+
+
+{% endblock  %}
