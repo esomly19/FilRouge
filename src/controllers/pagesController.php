@@ -4,6 +4,7 @@ namespace App\controllers;
 
 use App\Database;
 use App\Model\personnage;
+use App\Model\Monsters;
 
 class pagesController {
 
@@ -67,6 +68,31 @@ class pagesController {
       $this->container->view->render($response, 'pages/liste.html.twig', ['personnages'=>$perso]);
     }
 
+    // ----------- Créer un perso -----------------------
+
+
+    public function creerM($request, $response, $args){  
+      //  $perso = Users::find(intVal($args['id']));
+        $this->container->view->render($response, 'pages/createMonstre.html.twig');
+      }
+  
+      
+      public  function creerMonstre($request, $response, $args)
+      {
+    /*    $perso = Users::find(intVal($_POST["id"]));*/
+        $monstre = new Monsters();
+        $monstre->nom = $_POST["nom"];
+        $monstre->poids = $_POST["poids"];
+        $monstre->taille = $_POST["taille"];
+        $monstre->vie = $_POST["vie"];
+        $monstre->attaque = $_POST["attaque"];
+        $monstre->defense = $_POST["defense"];
+        $monstre->agilite = $_POST["agilite"];
+        $monstre->photo = $_POST["photo"];
+        $monstre->save();
+        $monstre = Monsters::all();
+        $this->container->view->render($response, 'pages/liste.html.twig', ['Monsters'=>$monstre]);
+      }
 
     // ----------- Modifie un perso -----------------------
 
