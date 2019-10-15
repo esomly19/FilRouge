@@ -43,7 +43,7 @@ class pagesController {
 // ----------- Créer un perso -----------------------
 
 
-    public function creer($request, $response, $args){
+    public function creer($request, $response, $args){  
     //  $perso = Users::find(intVal($args['id']));
       $this->container->view->render($response, 'pages/createPerso.html.twig');
     }
