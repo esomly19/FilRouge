@@ -20,7 +20,7 @@ class QtFileLoaderTest extends TestCase
     public function testLoad()
     {
         $loader = new QtFileLoader();
-        $resource = __DIR__ . '/../fixtures/resources.ts';
+        $resource = __DIR__.'/../fixtures/resources.ts';
         $catalogue = $loader->load($resource, 'en', 'resources');
 
         $this->assertEquals([
@@ -52,14 +52,14 @@ class QtFileLoaderTest extends TestCase
     {
         $this->expectException('Symfony\Component\Translation\Exception\InvalidResourceException');
         $loader = new QtFileLoader();
-        $resource = __DIR__ . '/../fixtures/invalid-xml-resources.xlf';
+        $resource = __DIR__.'/../fixtures/invalid-xml-resources.xlf';
         $loader->load($resource, 'en', 'domain1');
     }
 
     public function testLoadEmptyResource()
     {
         $loader = new QtFileLoader();
-        $resource = __DIR__ . '/../fixtures/empty.xlf';
+        $resource = __DIR__.'/../fixtures/empty.xlf';
 
         $this->expectException('Symfony\Component\Translation\Exception\InvalidResourceException');
         $this->expectExceptionMessage(sprintf('Unable to load "%s".', $resource));

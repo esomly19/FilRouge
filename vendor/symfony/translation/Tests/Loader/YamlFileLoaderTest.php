@@ -20,7 +20,7 @@ class YamlFileLoaderTest extends TestCase
     public function testLoad()
     {
         $loader = new YamlFileLoader();
-        $resource = __DIR__ . '/../fixtures/resources.yml';
+        $resource = __DIR__.'/../fixtures/resources.yml';
         $catalogue = $loader->load($resource, 'en', 'domain1');
 
         $this->assertEquals(['foo' => 'bar'], $catalogue->all('domain1'));
@@ -31,7 +31,7 @@ class YamlFileLoaderTest extends TestCase
     public function testLoadDoesNothingIfEmpty()
     {
         $loader = new YamlFileLoader();
-        $resource = __DIR__ . '/../fixtures/empty.yml';
+        $resource = __DIR__.'/../fixtures/empty.yml';
         $catalogue = $loader->load($resource, 'en', 'domain1');
 
         $this->assertEquals([], $catalogue->all('domain1'));
@@ -59,7 +59,7 @@ class YamlFileLoaderTest extends TestCase
     {
         $this->expectException('Symfony\Component\Translation\Exception\InvalidResourceException');
         $loader = new YamlFileLoader();
-        $resource = __DIR__ . '/../fixtures/non-valid.yml';
+        $resource = __DIR__.'/../fixtures/non-valid.yml';
         $loader->load($resource, 'en', 'domain1');
     }
 }

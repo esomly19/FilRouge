@@ -24,7 +24,6 @@ class ComposerStaticInit64c44cae45d733c0bfdf610871f41b5b
             'Symfony\\Polyfill\\Ctype\\' => 23,
             'Symfony\\Contracts\\Translation\\' => 30,
             'Symfony\\Component\\Translation\\' => 30,
-            'Super_Street_Dora_Grand_Championship_Turbo\\' => 43,
             'Slim\\Views\\' => 11,
             'Slim\\' => 5,
         ),
@@ -50,6 +49,13 @@ class ComposerStaticInit64c44cae45d733c0bfdf610871f41b5b
         array (
             'Doctrine\\Common\\Inflector\\' => 26,
         ),
+        'A' => 
+        array (
+            'App\\Model\\' => 10,
+            'App\\Database\\' => 13,
+            'App\\Controller\\' => 15,
+            'App\\' => 4,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
@@ -72,10 +78,6 @@ class ComposerStaticInit64c44cae45d733c0bfdf610871f41b5b
         'Symfony\\Component\\Translation\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/translation',
-        ),
-        'Super_Street_Dora_Grand_Championship_Turbo\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/src',
         ),
         'Slim\\Views\\' => 
         array (
@@ -124,6 +126,22 @@ class ComposerStaticInit64c44cae45d733c0bfdf610871f41b5b
         'Doctrine\\Common\\Inflector\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/inflector/lib/Doctrine/Common/Inflector',
+        ),
+        'App\\Model\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/Model',
+        ),
+        'App\\Database\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/Config',
+        ),
+        'App\\Controller\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/Controller',
+        ),
+        'App\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src',
         ),
     );
 
