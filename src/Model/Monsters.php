@@ -9,6 +9,8 @@ class Monsters extends \Illuminate\Database\Eloquent\Model {
 
     use SoftDeletes;
 
+    public $timestamps = false;
+
     function battle(){
         return $this->hasMany('App\Model\Battles','id','monstre');
     }
