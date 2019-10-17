@@ -121,6 +121,18 @@ class pagesController {
       $this->container->view->render($response, 'pages/liste.html.twig', ['personnages'=>$perso]);
     }
 
+/*---------------------------------------------------*/
+public function choisir($request, $response, $args)
+    {
+      $perso = Personnage::all();
+      $monstre = Monsters::all();   
+           $this->container->view->render($response, 'pages/pickthem.html.twig', ['personnages'=>$perso, 'monstres'=>$monstre]);
+    }
+
 }
+
+
+
+
 
  ?>

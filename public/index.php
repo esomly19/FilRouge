@@ -41,6 +41,10 @@ $app->post('/login', \App\controllers\loginController::class . ':seConnecter');
 $app->get('/create/{id}', \App\controllers\loginController::class . ':voir')/*-> setName('login')*/;
 $app->post('/create/{id}', \App\controllers\loginController::class . ':creerUtilisateur');
 
+$app->get('/choisir', \App\controllers\pagesController::class . ':choisir')->setName('choix');
+$app->post('/choisir', \App\controllers\pagesController::class . ':choisir');
+
+
 $app->run();
 
 
