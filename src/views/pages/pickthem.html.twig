@@ -1,0 +1,36 @@
+
+  {% block stylesheets %}
+            <link href="../../src/views/css/pick.css" type="text/css" rel="stylesheet" />
+        {% endblock %}
+{% block content %}
+
+<div class="block">
+<div class="personnage">
+  <div class="tab">  <h1> PERSONNAGES </h1> </div>
+            {% for perso in personnages %}
+            <div class="card-image">
+            <img class="image" src={{perso.photo}} alt="Personnage" >
+             </br>
+                <span class="card-title">{{perso.nom}}</span>
+                </br>
+			 <input class="favorite styled"   type="button"   value="Le jouer">
+                             </div>
+                           {% endfor %}
+        
+    </div>
+
+<div class="monstre">
+   <div class="tab">  <h1> MONSTRES</h1> </div>
+             {% for monstre in monstres %}
+             <div class="card-image">
+            <img class="image" src={{monstre.photo}} alt="Monstre" >
+             </br>
+              <span class="card-title">{{monstre.nom}}</span>
+              </br>
+				 <input class="favorite styled" type="button"  value="Le combattre">
+              </div>
+                            {% endfor %}
+        
+    </div>
+    </div>
+{% endblock  %}

@@ -1,0 +1,65 @@
+.personnage{
+border:solid;
+display: flex;
+border-color: blue;
+/*flex-wrap: wrap;*/
+flex-flow: row wrap;
+background-color: black;
+width:49%;
+margin-right:10px;
+height:100%;
+
+
+}
+.monstre{
+  border:solid;
+  margin-left:10px;
+  display: flex;
+  border-color: red;
+  background-color: black;
+  flex-flow: row wrap;
+  width:49%;
+  height:100%;
+}
+.block{
+  display: flex;
+  align-items: stretch;
+  width:100%;
+  height:100%;
+ 
+ 
+ 
+}
+.image{
+  padding : 10px;
+  width: 68%;
+  height: 68%;
+}
+
+
+.card-image {
+  width: 200px;
+  height: 200px;
+
+  background-color: white;
+ border: 1px blue solid;
+ text-align: center;
+ display: table-cell;
+
+ vertical-align: middle;
+ }
+
+ .tab{
+   color:black;
+   width:100%;
+   text-align: center;
+   height :4%;
+   background-color: red  ;
+
+ }
+
+h1{
+  margin:0;
+  border:0;
+  padding:0;
+}
