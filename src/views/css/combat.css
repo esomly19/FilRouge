@@ -5,27 +5,28 @@
 
 div .vie{
     background-color: red;
+    width:100%;
 }
 
 
 #vie_personnage{
     background-color: greenyellow;
-    width: 100%;
-    color: white;
+
+    color: black;
     text-align: center;
 }
 
 
 #vie_monstre{
     background-color: greenyellow;
-    width: 100%;
-    color: white;
+
+    color: black;
 }
 
 div .combattant{
     border: solid;
     width: 48%;
-
+    text-align: center;
 }
 
 .image{
