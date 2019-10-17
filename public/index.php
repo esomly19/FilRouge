@@ -26,12 +26,22 @@ $app->get('/liste', \App\controllers\pagesController::class. ':liste')->setName(
 // VOIR DETAIL D'UN PERSO     
 $app->get('/detail/{id}', \App\controllers\pagesController::class. ':detail')->setName('detail');
 
+// VOIR DETAIL D'UN Monstre     
+$app->get('/detailm/{id}', \App\controllers\pagesController::class. ':detailm')->setName('detailm');
+
 // SUPPRIMER UN PERSO
 $app->post('/liste', \App\controllers\pagesController::class. ':supprimer')->setName('supprimer');
 
+// SUPPRIMER UN monstre
+$app->post('/ok_liste', \App\controllers\pagesController::class. ':supprimerm')->setName('supprimerm');
+
 // MODIFIER UN PERSO
-$app->get('/modifier{id}', \App\controllers\pagesController::class. ':modifier')->setName('modifier');
-$app->post('/modifier{id}', \App\controllers\pagesController::class. ':updatePerso');
+$app->get('/modifperso{id}', \App\controllers\pagesController::class. ':modifperso')->setName('modifperso');
+$app->post('/modifperso{id}', \App\controllers\pagesController::class. ':updatePerso');
+
+// MODIFIER UN Monstre
+$app->get('/modifierm{id}', \App\controllers\pagesController::class. ':modifierm')->setName('modifierm');
+$app->post('/modifierm{id}', \App\controllers\pagesController::class. ':updateMonstre');
 
 $app->get('/accueil', \App\controllers\loginController::class . ':accueil')->setName('connexion');
 

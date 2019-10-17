@@ -17,7 +17,7 @@ Voici les personnages qui sont dans la base de donnée : </br>
     Prenom : {{perso.prenom}} </br>
     <a href="{{ path_for('detail', { 'id': perso.id }) }}" > En savoir plus </a>
   </br>
-    <a href="{{ path_for('modifier', { 'id': perso.id }) }}" > Le modifier </a>
+    <a href="{{ path_for('modifperso', { 'id': perso.id }) }}" > Le modifier </a>
   </br>
   <img src={{perso.photo}} alt="Dora" width="100" height="100">
     </br>
@@ -32,11 +32,11 @@ Voici les personnages qui sont dans la base de donnée : </br>
 Voici les monstres qui sont dans la base de donnée : </br>
     <div class="container2">
     {% for monstre in monstres %}
-<form action="{{ path_for('supprimer')}}" method="post">
+<form action="{{ path_for('supprimerm')}}" method="post">
     <div class="case"> Nom : {{ monstre.nom}} </br>
-    <a href="{{ path_for('detail', { 'id': monstre.id }) }}" > En savoir plus </a>
+    <a href="{{ path_for('detailm', { 'id': monstre.id }) }}" > En savoir plus </a>
   </br>
-    <a href="{{ path_for('modifier', { 'id': monstre.id }) }}" > Le modifier </a>
+    <a href="{{ path_for('modifierm', { 'id': monstre.id }) }}" > Le modifier </a>
   </br>
   <img src="../../img/totor.jpeg" alt="Dora" width="100" height="100">
   </br>

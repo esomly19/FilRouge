@@ -1,0 +1,38 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+
+<h1> Modification de {{ monstres.nom }} </h1>
+
+<!--  path_for('perso')  -->
+
+<form action="{{ modifierm }}" method="post">
+</br></br>  <label for "nom"> Nom </label>
+  <input type="text" name="nom" id="nom" value="{{monstres.nom}}">
+</br></br>
+<label for "taille"> Taille </label>
+<input type="number" name="taille" id="taille" value="{{monstres.taille}}">
+</br></br>
+<label for "poids"> Poids </label>
+<input type="number" name="poids" id="poids" value="{{monstres.poids}}">
+</br></br>
+  <label for "vie"> Point de vie </label>
+  <input type="number" name="vie" id="vie" value="{{monstres.vie}}">
+</br></br>
+<label for "defense"> Point de défense </label>
+<input type="number" name="defense" id="defense" value="{{monstres.defense}}">
+</br></br>
+<label for "attaque"> Point d'attaque </label>
+<input type="number" name="attaque" id="attaque" value="{{monstres.attaque}}">
+</br></br>
+<label for "agilite"> Point d'agilité </label>
+<input type="number" name="agilite" id="agilite" value="{{monstres.agilite}}">
+</br></br>
+<label for "photo"> Photo </label>
+<input type="text" name="photo" id="photo" value="{{monstres.photo}}">
+</br></br>
+<button type="submit" > Modifier </button>
+</form>
+
+
+{% endblock  %}
