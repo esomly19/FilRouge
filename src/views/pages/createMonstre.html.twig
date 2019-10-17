@@ -9,30 +9,30 @@
 
 <form action="{{ monsters.id }}" method="post">
 </br></br>  <label for "nom"> Nom </label>
-  <input type="text" name="nom" id="nom" value="{{monsters.nom}}">
+  <input type="text" name="nom" id="nom" value="{{monsters.nom}}" required>
 </br></br>
 <label for "taille"> Taille </label>
-<input type="number" name="taille" id="taille" value="{{monsters.taille}}">
+<input type="number" name="taille" id="taille" value="{{monsters.taille}}" required>
 </br></br>
 <label for "poids"> Poids </label>
-<input type="number" name="poids" id="poids" value="{{monsters.poids}}">
+<input type="number" name="poids" id="poids" value="{{monsters.poids}}" required>
 </br></br>
   <label for "vie"> Point de vie </label>
-  <input type="number" name="vie" id="vie" value="{{monsters.vie}}">
+  <input type="number" name="vie" id="vie" value="{{monsters.vie}}" required>
 </br></br>
 <label for "defense"> Point de défense </label>
-<input type="number" name="defense" id="defense" value="{{monsters.defense}}">
+<input type="number" name="defense" id="defense" value="{{monsters.defense}}" required>
 </br></br>
 <label for "attaque"> Point d'attaque </label>
-<input type="number" name="attaque" id="attaque" value="{{monsters.attaque}}">
+<input type="number" name="attaque" id="attaque" value="{{monsters.attaque}}" required>
 </br></br>
 <label for "agilite"> Point d'agilité </label>
-<input type="number" name="agilite" id="agilite" value="{{monsters.agilite}}">
+<input type="number" name="agilite" id="agilite" value="{{monsters.agilite}}" required>
 </br></br>
 <label for "photo"> Photo </label>
-<input type="text" name="photo" id="photo" value="{{monsters.photo}}">
+<input type="text" name="photo" id="photo" value="{{monsters.photo}}" class="img2" >
 </br></br>
-<button type="submit" > Valider </button>
+<button type="submit" id="add"> Valider </button>
 </form>
 
 

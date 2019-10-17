@@ -9,33 +9,33 @@
 
 <form action="{{ personnages.id }}" method="post">
 </br></br>  <label for "nom"> Nom </label>
-  <input type="text" name="nom" id="nom" value="{{personnages.nom}}">
+  <input type="text" name="nom" id="nom" value="{{personnages.nom}}" required>
 </br></br>
   <label for "prenom"> Prenom </label>
-  <input type="text" name="prenom" id="prenom" value="{{personnages.prenom}}">
+  <input type="text" name="prenom" id="prenom" value="{{personnages.prenom}}" required>
 </br></br>
 <label for "taille"> Taille </label>
-<input type="number" name="taille" id="taille" value="{{personnages.taille}}">
+<input type="number" name="taille" id="taille" value="{{personnages.taille}}" required>
 </br></br>
 <label for "poids"> Poids </label>
-<input type="number" name="poids" id="poids" value="{{personnages.poids}}">
+<input type="number" name="poids" id="poids" value="{{personnages.poids}}" required>
 </br></br>
   <label for "vie"> Point de vie </label>
-  <input type="number" name="vie" id="vie" value="{{personnages.vie}}">
+  <input type="number" name="vie" id="vie" value="{{personnages.vie}}" required>
 </br></br>
 <label for "defense"> Point de défense </label>
-<input type="number" name="defense" id="defense" value="{{personnages.defense}}">
+<input type="number" name="defense" id="defense" value="{{personnages.defense}}" required>
 </br></br>
 <label for "attaque"> Point d'attaque </label>
-<input type="number" name="attaque" id="attaque" value="{{personnages.attaque}}">
+<input type="number" name="attaque" id="attaque" value="{{personnages.attaque}}" required>
 </br></br>
 <label for "agilite"> Point d'agilité </label>
-<input type="number" name="agilite" id="agilite" value="{{personnages.agilite}}">
+<input type="number" name="agilite" id="agilite" value="{{personnages.agilite}}" required>
 </br></br>
 <label for "photo"> Photo </label>
-<input type="text" name="photo" id="photo" value="{{personnages.photo}}">
+<input class="img" type="text" name="photo" id="photo" value="{{personnages.photo}}">
 </br></br>
-<button type="submit" > Valider </button>
+<button type="submit" onclick="img_default()"> Valider </button>
 </form>
 
 

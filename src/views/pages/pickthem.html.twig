@@ -1,6 +1,8 @@
 
   {% block stylesheets %}
+            <script type="text/javascript" src="../../src/views/js/combat.js"></script>
             <link href="../../src/views/css/pick.css" type="text/css" rel="stylesheet" />
+
         {% endblock %}
 {% block content %}
 
@@ -13,9 +15,11 @@
              </br>
                 <span class="card-title">{{perso.nom}}</span>
                 </br>
-			 <input class="favorite styled"   type="button"   value="Le jouer">
+			 <input class="favorite styled "   type="button" name="perso"  value="Le jouer" id="perso{{perso.id}}" onClick="test({{perso.id}})">
+       <input type="hidden" id="perso">
                              </div>
                            {% endfor %}
+        
     </div>
 
 <div class="monstre">
@@ -26,7 +30,8 @@
              </br>
               <span class="card-title">{{monstre.nom}}</span>
               </br>
-				 <input class="favorite styled" type="button"  value="Le combattre">
+				 <input class="favorite styled " type="button"  value="Le combattre" name="monstre" id="monstre{{monstre.id}}" onClick="testm({{monstre.id}})">
+         <input type="hidden" id="monstre">
               </div>
                             {% endfor %}
         
