@@ -1,6 +1,6 @@
 <?php
 require_once 'vendor/autoload.php';
-use \App\Model\Characters as personnage;
+use \App\Model\personnage as personnage;
 use \App\Model\Monsters as monstre;
 use \App\Model\Battles as combat;
 
@@ -14,9 +14,22 @@ require './src/container.php';
 
 new \App\Database\Capsule;
 
-$personnages = personnage::all();
+echo "test cherche le monstre 33<br><br>";
+
+
+
+$monstre12 = monstre::where('id','=',12)->first();
+
+    echo $monstre12->nom ."<br><br>";
+
+
+
+
 
 echo "test de donnée des personnage <br><br>";
+
+
+$personnages = personnage::all();
 
 foreach($personnages as $personnage){
     echo "nom : ". $personnage->nom ." prenom :". $personnage->prenom."<br>";

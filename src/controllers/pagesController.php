@@ -173,6 +173,13 @@ public function choisir($request, $response, $args)
            $this->container->view->render($response, 'pages/pickthem.html.twig', ['personnages'=>$perso, 'monstres'=>$monstre]);
     }
 
+
+    public function combat($request, $response, $args){
+      $personnage = Personnage::where('id','=',33)->first();
+      $monstre = Monsters::where('id','=',12)->first();
+      $this->container->view->render($response, 'pages/combat.html.twig', ['personnage'=>$personnage, 'monstre'=>$monstre]);
+    }
+
 }
 
  ?>
