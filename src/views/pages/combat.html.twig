@@ -3,13 +3,16 @@
         {% endblock %}
 {% block content %}
 
+    {% set vieactuelleP = personnage.vie %}
+    {% set vieactuelleM = 5 %}
+
     <div class="bagarre">
         <div class="pers combattant">
         <div class="image">
                 <img  id="personnage" src={{personnage.photo}}>
         </div>
             <div class="vie">
-                <p id="vie_personnage">{{monstre.vie}}/{{monstre.vie}}</p>
+                <p id="vie_personnage" width=(({{vieactuelleP}}/{{personnage.vie}})*100)%>{{vieactuelleP}}/{{personnage.vie}}</p>
             </div>
         </div>
         <h1> VS </h1>
@@ -17,13 +20,15 @@
             <div class="image">
                 <img  id="monstre" src={{monstre.photo}}>
             <div class="vie">
-                <p id="vie_monstre">{{monstre.vie}}/{{monstre.vie}}</p>
+                <p id="vie_monstre" width=40px >{{vieactuelleM}}/{{monstre.vie}} </p>
             </div>
         </div>
     </div>
 
     <div class="log">
         <p>
+
+        
         </p>
     </div>
 
