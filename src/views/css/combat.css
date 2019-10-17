@@ -1,0 +1,41 @@
+.bagarre{
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+div .vie{
+    background-color: red;
+}
+
+
+#vie_personnage{
+    background-color: greenyellow;
+    width: 100%;
+    color: white;
+    text-align: center;
+}
+
+
+#vie_monstre{
+    background-color: greenyellow;
+    width: 100%;
+    color: white;
+}
+
+div .combattant{
+    border: solid;
+    width: 48%;
+
+}
+
+.image{
+    max-height: 100%;
+    align-content: center;
+} 
+
+img{
+    height: 89%;
+    width: auto;
+    max-height: 89%;
+}
+
