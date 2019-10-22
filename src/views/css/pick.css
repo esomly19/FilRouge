@@ -60,3 +60,46 @@ h1{
   border:0;
   padding:0;
 }
+
+
+#overlay {
+  position: fixed;
+  display: none;
+  width: 40%;
+  height: 40%;
+  position: fixed;
+  top:20%;
+  left :20%;
+  right:20%;
+  bottom:40%;
+  color:white;
+  background-color: black;
+  z-index: 8;
+  cursor: pointer;
+  
+}
+
+
+#overlaym {
+  position: fixed;
+  display: none;
+  width: 40%;
+  height: 40%;
+  position: fixed;
+  top:30%;
+  left :30%;
+  right:30%;
+  bottom:30%;
+  color:white;
+  background-color: black;
+  z-index: 8;
+
+  cursor: pointer;
+}
+
+.txt{
+  float: right;
+  text-align: center;
+  margin-right: 10%;
+
+}
