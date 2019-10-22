@@ -21,6 +21,7 @@ div .vie{
     background-color: greenyellow;
 
     color: black;
+    
 }
 
 div .combattant{
@@ -30,8 +31,10 @@ div .combattant{
 }
 
 .image{
-    max-height: 100%;
-    align-content: center;
+    height: 80%;
+    width: 80%;
+    text-align: center;
+    margin-left: 75px;
 } 
 
 img{
