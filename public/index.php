@@ -8,6 +8,8 @@ $app = new \Slim\App([
     ]
 ]);
 
+session_start();
+
 require '../src/container.php';
 new \App\Database\Capsule;
 $app->get('/', \App\controllers\pagesController::class . ':home')->setName('home');
@@ -44,6 +46,7 @@ $app->get('/modifierm{id}', \App\controllers\pagesController::class. ':modifierm
 $app->post('/modifierm{id}', \App\controllers\pagesController::class. ':updateMonstre');
 
 $app->get('/accueil', \App\controllers\loginController::class . ':accueil')->setName('connexion');
+$app->get('/disconnect', \App\controllers\loginController::class . ':disconnect')->setName('deconnection');
 
 $app->get('/login', \App\controllers\loginController::class . ':seConnecter')-> setName('login');
 $app->post('/login', \App\controllers\loginController::class . ':seConnecter');
