@@ -14,10 +14,25 @@
         {% block header %}
         <ul class="topnav">
           <li><a class="active" href="{{ path_for('home')}}">Home</a></li>
-          <li><a href="{{ path_for('creation')}}">Créer un nouveau personnage</a></li>
-          <li><a href="{{ path_for('liste')}}">Voir tous les personnages</a></li>
-          <li class="right"><a href="{{ path_for('connexion')}}">Connexion</a></li>
-          <li><a href="{{ path_for('monstres')}}">Créer un nouveau monstre</a></li>          
+
+         
+         
+
+          {% if login.isConnected %}
+          {# {% if not app.user %} #}
+
+            <li><a href="{{ path_for('creation')}}">Créer un nouveau personnage</a></li>
+            <li><a href="{{ path_for('liste')}}">Voir tous les personnages</a></li>
+            <li class="right">{{login.user}}</li>
+            <li class="right"><a href="{{path_for('deconnection')}}">Déconnection</a></li>
+            <li><a href="{{ path_for('monstres')}}">Créer un nouveau monstre</a></li>
+
+          {% else %}  
+
+            <li class="right"><a href="{{ path_for('connexion')}}">Connexion</a></li>
+          
+          {% endif %}
+
         </ul>
         {% endblock %}
       </div> 

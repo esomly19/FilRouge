@@ -26,8 +26,20 @@ class loginController
     }
 
         public static function isConnected(){
-         return isset($_SESSION['pseudo']);
+                return isset($_SESSION['pseudo']);
         }
+
+        public function user(){
+                if(self::isConnected()){
+                        return Users::find($_SESSION['pseudo']);
+                }
+        }
+
+        public function seDeconnecter($request, $response){
+                self::disconnect();
+
+                $this->container->view->render($response, 'pages/home.html.twig');
+             }
 
         public function seConnecter($request, $response,$args){
            $user = Users::where('pseudo','=',$_POST["pseudo"])->first();
@@ -39,9 +51,9 @@ class loginController
         }
 
         private static function loadProfile($user){
-		$_SESSION['Identifiant'] = $user->id;
+		$_SESSION['pseudo'] = $user->id;
 		if($user->pseudo != null){
-		        $_SESSION['participant'] = strtoupper($user->pseudo);
+		        $_SESSION['pseudo'] = strtoupper($user->pseudo);
                 }
         }
 
@@ -50,14 +62,12 @@ class loginController
         public static function isGoodPassword(Users $user,$password){
                 if(!password_verify($password.self::salt, $user->mdp)){
                         throw new AE('Exception');
-                }
-                echo 'bonjour';
-               
+                }               
         }
 
         public static function disconnect(){
 		if(self::isConnected())
-			unset($_SESSION['Identifiant']);
+			unset($_SESSION['pseudo']);
 	}
         
 	public function creerUtilisateur($request, $response,$args)

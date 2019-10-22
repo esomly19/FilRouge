@@ -4,7 +4,7 @@
 
 <h1> Création compte </h1>
 				
-
+	{% if App\controllers\loginController::isConnected %}
 
 				<!--path_for('login') -->
 				<form action="{{utilisateurs.id}}"method="post">	
