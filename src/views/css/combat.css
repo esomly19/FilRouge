@@ -43,3 +43,8 @@ img{
     max-height: 89%;
 }
 
+.log {
+    position : absolute;
+    bottom:0;
+}
+
