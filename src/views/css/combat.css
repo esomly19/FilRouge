@@ -1,8 +1,14 @@
 .bagarre{
     display: flex;
     flex-wrap: nowrap;
+    background: url("https://img.wallpapersafari.com/desktop/1920/1080/32/91/l485et.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height:78%;
 }
+body{
 
+}
 div .vie{
     background-color: red;
     width:100%;
@@ -27,6 +33,7 @@ div .vie{
 div .combattant{
     border: solid;
     width: 48%;
+    height:100%;
     text-align: center;
 }
 
@@ -58,3 +65,5 @@ img{
    background-color: black;
    color: green;
 }
+
+

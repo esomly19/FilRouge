@@ -23,7 +23,11 @@ class Personnage extends \Illuminate\Database\Eloquent\Model {
     use SoftDeletes;
 
     public $timestamps = false;
+    public  $mort=false;
 
+    public function setMort(){
+        $mort = true;
+    }
 
 
     public function getId() {
@@ -68,6 +72,16 @@ class Personnage extends \Illuminate\Database\Eloquent\Model {
         // Vérification - Le nombre doit être strictemeznt positif et compris entre 0 et 100
         if ($degats >= 0 && $degats <= 100) {
             $this->degats = $degats; // on assigne alors la valeur $degats à l'attribut _degats
+        }
+    }
+
+    public function Attaquer($e)
+    {
+        if(($e.getVie()-$this.getAttaque())<0){
+            $e.setDegats($this.getAttaque());
+            $e.setMort();
+        }else{
+            $e.setDegats($this.getAttaque());
         }
     }
     

@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
 }); */
 
 
-
+let ind =1;
 
 function test(id) {
     var p = document.getElementById("perso")
@@ -45,14 +45,39 @@ function testm(id) {
        document.location.href=urlOK
 
     }
-
-
-
 }
+
+    function tour(){
+        let box = document.getElementsByClassName("log");
+        let p= document.createElement('p');
+        let e= document.createTextNode("tour " + ind +":" );
+        console.log("tour " + ind +":" );
+        ind++;
+        p.textContent=e;
+        document.getElementsByClassName("log").appendChild(p);
+
+    }
+    
+       /* var phpadd= <?php add(1,2);?> //call the php add function
+        alert(phpadd) // result in undefined*/
+      
 
 
 /*
-document.getElementById("perso").addEventListener("click", event => {
-   alert("ok");
-})
+<script type="text/javascript">
+function tour(clicked)
+{
+	var x="<?php {{personnage.attaquer()}} ?>";
+	alert(x);
+	return false;
+}
+</script>
 */
+
+
+
+
+document.getElementById("tour").addEventListener("click", event => {
+   /*alert("ok");*/
+   tour();
+})
