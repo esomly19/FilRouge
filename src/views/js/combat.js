@@ -16,7 +16,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-
 function test(id) {
     var p = document.getElementById("perso")
     var btn = document.getElementById("perso"+id)
@@ -32,11 +31,19 @@ function testm(id) {
         alert ("Commencer par choisir un personnage")
     }
     else {
+        //let url= $('.monstre').data('url')+ document.getElementById("perso").value +"VS"+document.getElementById("monstre").value;
+        let urll = document.getElementById('urll').value;
         document.getElementById("monstre").value = id;   
        // alert(document.getElementById("perso").value +"VS" +document.getElementById("monstre").value)
        // document.getElementById("perso").value = "";
         btnM.style.backgroundColor = "green";
-        document.location.href='https://webetu.iutnc.univ-lorraine.fr/www/helf6u/Super_Street_Dora_Grand_Championship_Turbo/public/index.php/combat'+ document.getElementById("perso").value +"VS"+document.getElementById("monstre").value
+        console.log(urll)
+       // console.log(document.getElementById("monstre").value)
+        console.log(urll+document.getElementById("perso").value+"VS"+document.getElementById("monstre").value)
+        let urlOK = urll+document.getElementById("perso").value+"VS"+document.getElementById("monstre").value
+       // document.location.href='https://webetu.iutnc.univ-lorraine.fr/www/helf6u/Super_Street_Dora_Grand_Championship_Turbo/public/index.php/combat'+ document.getElementById("perso").value +"VS"+document.getElementById("monstre").value
+        document.location.href=urlOK
+
     }
 
 

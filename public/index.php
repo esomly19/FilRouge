@@ -58,7 +58,7 @@ $app->get('/choisir', \App\controllers\pagesController::class . ':choisir')->set
 $app->post('/choisir', \App\controllers\pagesController::class . ':choisir');
 
 
-$app->get('/combat{idp}VS{idm}', \App\controllers\pagesController::class . ':combat')->setName('combat');
+$app->get('/combat{idp}{idm}', \App\controllers\pagesController::class . ':combat')->setName('combat');
 
 $app->run();
 
