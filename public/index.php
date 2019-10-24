@@ -57,6 +57,7 @@ $app->post('/create/{id}', \App\controllers\loginController::class . ':creerUtil
 $app->get('/choisir', \App\controllers\pagesController::class . ':choisir')->setName('choix');
 $app->post('/choisir', \App\controllers\pagesController::class . ':choisir');
 
+
 $app->get('/combat{idp}VS{idm}', \App\controllers\pagesController::class . ':combat')->setName('combat');
 
 $app->run();

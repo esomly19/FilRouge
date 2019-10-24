@@ -5,6 +5,7 @@ namespace App\controllers;
 use App\Database;
 use App\Model\personnage;
 use App\Model\Monsters;
+use App\Model\Battles;
 
 class pagesController {
 
@@ -177,23 +178,100 @@ class pagesController {
     }
 
 /*---------------------------------------------------*/
-public function choisir($request, $response, $args)
+    public function choisir($request, $response, $args)
     {
       $perso = Personnage::all();
       $monstre = Monsters::all();   
            $this->container->view->render($response, 'pages/pickthem.html.twig', ['personnages'=>$perso, 'monstres'=>$monstre]);
     }
 
+
     public function combat($request, $response, $args){
+      
      // $idmonstre = Monsters::find($_POST["monstre"]);
      $idmonstre = (intVal($args['idm']));
      $idperso = (intVal($args['idp']));
       //$idperso = Personnage::find($_POST["perso"]);
       $perso = Personnage::where('id','=',$idperso)->first();
       $monstre = Monsters::where('id','=',$idmonstre)->first();
-      $this->container->view->render($response, 'pages/combat.html.twig', ['personnage'=>$perso, 'monstre'=>$monstre]);
+      $personne = (intVal($args['idp']));
+
+      // COMBAT
+      $combat = new Battles();
+      $combat->perso = $idperso;
+      $combat->monstre = $idmonstre;
+      $combat->save();
+
+      // QUI COMMENCE
+      $agip = $perso->agilite ;
+      $agim = $monstre->agilite;
+      if ($agip>$agim) {
+        $premier = $perso;
+      }
+      else $premier = $monstre;
+
+      // Degat infliger par le perso 
+      $degatp = $perso->attaque;
+      $degatm = $monstre->attaque;
+
+      // vie pour après
+      $viep = $perso->vie;
+      $viem = $monstre->vie;
+
+      // Nombre de tour 
+      $nbtour=0;
+      
+      while($viem >=0 && $viep >= 0){
+          if ($premier==$perso){
+            $viem = $viem - $degatp;
+            $nbtour++;
+            if ($viem <= 0) {
+            $gagnant = $perso; 
+            }
+          }
+            else {
+              $viep = $viep - $degatm;
+              $nbtour++;
+              if ($viep <= 0) {
+                $gagnant = $monstre;
+              }
+          
+          }
+        }
+          
+        
+        
+  
+/*
+        if ($premier=$perso){
+          $viem = $viem - $degatp;
+        }
+
+      }
+      while ($viep != 0 || $viem != 0) {
+          $viem = $viem - $degatp;
+          $viep = $viep - $degatm;
+      }
+      */
+          /*
+        } 
+         $nbtour++;         
+     } 
+     */
+     
+    // gagnant
+    /*
+    if ($viep <= 0) {
+      $gagnant = $perso->nom;
+    }
+    else if ($viem <= 0) {
+      $gagnant = $monstre->nom;
+    }
+*/
+      $this->container->view->render($response, 'pages/combat.html.twig', ['personnage'=>$perso, 'monstre'=>$monstre, 'nbtour'=>$nbtour,'premier'=>$premier, 'gagnant'=>$gagnant, 'degatp'=>$degatp]);
     }
 
 }
+
 
  ?>
