@@ -5,28 +5,37 @@
 
     {% set vieactuelleP = personnage.vie %}
     {% set vieactuelleM = 5 %}
-
-    <div class="bagarre">
+   <div class="bagarre">
         <div class="pers combattant">
         <div class="image">
                 <img  id="personnage" src={{personnage.photo}}>
-        </div>
+      
             <div class="vie">
                 <p id="vie_personnage" width=(({{vieactuelleP}}/{{personnage.vie}})*100)%>{{vieactuelleP}}/{{personnage.vie}}</p>
+                </div>
             </div>
         </div>
+      <div class="centre">
         <h1> VS </h1>
+
+       <button type="button">Tour suivant!</button>
+     </div>
         <div class="mons combattant">
             <div class="image">
                 <img  id="monstre" src={{monstre.photo}}>
+           
             <div class="vie">
-                <p id="vie_monstre" width=40px >{{vieactuelleM}}/{{monstre.vie}} </p>
+                <p id="vie_monstre" width=(({{vieactuelleM}}/{{monstre.vie}})*100)%> {{vieactuelleM}}/{{monstre.vie}} </p>
+                 </div>
             </div>
         </div>
     </div>
-
-    <div class="log">
+  <div class="log">
         <p>
+        Tour 1 : p attaque monstre 
+          <br>
+            Tour 2 : monstre attaque p 
+        
          {{premier.nom}} commence et inflige {{premier.attaque}} dégat à son adversaire</br>
          Le combat a duré {{nbtour}} tours </br>
          Le gagnant est {{gagnant.nom}}

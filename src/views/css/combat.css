@@ -43,8 +43,18 @@ img{
     max-height: 89%;
 }
 
-.log {
-    position : absolute;
-    bottom:0;
+.centre{
+  text-align:center;
 }
-
+.log{
+   padding-top :5%;
+  margin-top:5px;
+  border: 5px solid black;
+     position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+  height:20%;
+   background-color: black;
+   color: green;
+}
