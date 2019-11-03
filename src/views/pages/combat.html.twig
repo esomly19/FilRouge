@@ -29,6 +29,7 @@
       <div id="centre">
       
         <h1> VS </h1>
+         <button id="rejouer">Rejouer</button>
 
      </div>
         <div class="mons combattant">
@@ -75,10 +76,11 @@ var playAgain = document.getElementById('playAgain');
 let attaque = Math.round((document.getElementById("attaque").textContent * document.getElementById("poids").textContent) / document.getElementById("taille").textContent) ;
 let attaquem= Math.round((document.getElementById("attaqueM").textContent * document.getElementById("poidsM").textContent) / document.getElementById("tailleM").textContent);
 
-
 function enableButtons() {
 	attackButton.disabled = false;
-	counterButton.disabled = false;
+    	counterButton.disabled = false;
+        
+document.getElementById("rejouer").disabled= true;
 }
 
 function fight(id) {
@@ -120,15 +122,17 @@ function healthChange() {
   document.getElementById("pvm").innerHTML = compHealth+"/"+ pvm;  
 }
 function again(){
-    var x = document.createElement("BUTTON");
-  var t = document.createTextNode("Rejouer");
-  x.appendChild(t);
-  document.getElementById("centre").appendChild(x);
-  document.getElementById("centre").addEventListener("click", event => {
- window.location="https://webetu.iutnc.univ-lorraine.fr/www/farruggi5u/dd8/Super_Street_Dora_Grand_Championship_Turbo/public/index.php/choisir";
-})
+ 
+document.getElementById("rejouer").disabled= false;
 
 }
+document.getElementById("rejouer").addEventListener("click", event => {
+  let url =   document.location.href;
+  var the_arr = url.substring(0, url.lastIndexOf('/'));
+  url=  the_arr+'/choisir';
+window.location=url;
+
+});
 function gameOver() {
     res="";
 	if (yourHealth === 0 || compHealth === 0) {
