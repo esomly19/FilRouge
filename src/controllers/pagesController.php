@@ -271,6 +271,14 @@ class pagesController {
       $this->container->view->render($response, 'pages/combat.html.twig', ['personnage'=>$perso, 'monstre'=>$monstre, 'nbtour'=>$nbtour,'premier'=>$premier, 'gagnant'=>$gagnant, 'degatp'=>$degatp]);
     }
 
+
+    public function liscomb($request, $response, $args){
+      $battles =  Battles::all();
+      $perso = Personnage::all();
+      $monstre = Monsters::all();
+      $this->container->view->render($response, 'pages/stats.html.twig', ['battles'=>$battles,'personnage'=>$perso, 'monstre'=>$monstre]);
+    }
+
 }
 
 

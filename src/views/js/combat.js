@@ -1,30 +1,3 @@
-
-
-
-let ind =1;
-/*
-let idp =document.getElementById("perso").value;
-let idm= document.getElementById("monstre").value;
-*/
-//personnage
-let attaque = document.getElementById("attaque").textContent;
-let agilite = document.getElementById("agilite").textContent;
-let defense = document.getElementById("defense").textContent;
-let vie=document.getElementById("vie").textContent;
-let poids=document.getElementById("poids").textContent;
-let taille=document.getElementById("taille").textContent;
-let nom=document.getElementById("nom").textContent;
-//monstre
-let attaquem=document.getElementById("attaqueM").textContent;
-let agilitem=document.getElementById("agiliteM").textContent;
-let defensem=document.getElementById("defenseM").textContent;
-let viem=document.getElementById("vieM").textContent;
-let poidsm=document.getElementById("tailleM").textContent;
-let taillem=document.getElementById("poidsM").textContent;
-let nomm=document.getElementById("nomM").textContent;
-
-let dmg;
-
 function test(id) {
     var p = document.getElementById("perso")
     var btn = document.getElementById("perso"+id)
@@ -55,9 +28,3 @@ function testm(id) {
 
     }
 }
-
-
-document.getElementById("tour").addEventListener("click", event => {
-
-   tour();
-})

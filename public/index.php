@@ -58,6 +58,10 @@ $app->get('/choisir', \App\controllers\pagesController::class . ':choisir')->set
 $app->post('/choisir', \App\controllers\pagesController::class . ':choisir');
 
 
+$app->get('/comb', \App\controllers\pagesController::class . ':liscomb')->setName('liscombat');
+$app->post('/comb', \App\controllers\pagesController::class . ':liscomb');
+
+
 $app->get('/combat{idp}{idm}', \App\controllers\pagesController::class . ':combat')->setName('combat');
 
 $app->run();
