@@ -37,10 +37,14 @@
         <input class="favorite styled "   type="button" name="perso"  value="Détail" id="perso{{monstre.id}}" onClick="onm({{monstre}})">
 				 <input class="favorite styled " type="button"  value="Le combattre" name="monstre" id="monstre{{monstre.id}}" onClick="testm({{monstre.id}})">
          <input type="hidden" id="monstre">
+         <input type="hidden" id="urll" value={{ path_for('combat', {'idp':id,'idm':id}) }} />  
+
               </div>
+              
                    <div id="overlaym" onclick="offm()">
                           
                                     </div>  
+                                  
                             {% endfor %}
         
     </div>

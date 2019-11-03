@@ -63,13 +63,20 @@ $app->group('', function() {
   $this->get('/modifierm{id}', \App\controllers\pagesController::class. ':modifierm')->setName('modifierm');
   $this->post('/modifierm{id}', \App\controllers\pagesController::class. ':updateMonstre');
 
-  $this->get('/create/{id}', \App\controllers\loginController::class . ':voir')/*-> setName('login')*/;
+  //AFFICHE la liste des combats
+  $app->get('/comb', \App\controllers\pagesController::class . ':liscomb')->setName('liscombat');
+  $app->post('/comb', \App\controllers\pagesController::class . ':liscomb');
+
+  $app->get('/combat{idp}{idm}', \App\controllers\pagesController::class . ':combat')->setName('combat');
+
+  $this->get('/create/{id}', \App\controllers\loginController::class . ':voir');
   $this->post('/create/{id}', \App\controllers\loginController::class . ':creerUtilisateur');
 })/*->add(new AuthMiddleware($container))*/;
 /**
  * le middleware génére des erreurs meme dans le cas ou on est connecte 
  * je ne l'ai donc pas inclus mais il est donc possible d'acceder au page ci dessus sans connection grâce aux urls
  */
+
 
 $app->run();
 
