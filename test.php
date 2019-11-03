@@ -14,6 +14,13 @@ require './src/container.php';
 
 new \App\Database\Capsule;
 
+
+if (isset($_SESSION['pseudo'])){
+    echo 'connecter';
+}else{
+    echo 'pas connecter';
+}
+
 echo "bruh";
 
 

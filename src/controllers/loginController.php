@@ -31,8 +31,11 @@ class loginController
 
         public function user(){
                 if(self::isConnected()){
-                        return Users::find($_SESSION['pseudo']);
+                        echo $_SESSION['pseudo'];
                 }
+                // if(self::isConnected()){
+                //         return Users::find($_SESSION['pseudo']);
+                // }
         }
 
         public function seDeconnecter($request, $response){
@@ -66,8 +69,7 @@ class loginController
         }
 
         public static function disconnect(){
-		if(self::isConnected())
-			unset($_SESSION['pseudo']);
+	        unset($_SESSION['pseudo']);
 	}
         
 	public function creerUtilisateur($request, $response,$args)
