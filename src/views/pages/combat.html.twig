@@ -1,5 +1,5 @@
 {% block stylesheets %}
-            <link href="../../src/views/css/combat.css" type="text/css" rel="stylesheet" />
+            <link rel="stylesheet" href="../../src/views/css/combat.css"  >
         {% endblock %}
 {% block content %}
 
@@ -9,41 +9,184 @@
         <div class="pers combattant">
         <div class="image">
                 <img  id="personnage" src={{personnage.photo}}>
-      
-            <div class="vie">
-                <p id="vie_personnage" width=(({{vieactuelleP}}/{{personnage.vie}})*100)%>{{vieactuelleP}}/{{personnage.vie}}</p>
-                </div>
+                <br>
+       <button id="attack" onClick="fight(id)">Attaquer</button>
+		<button id="counter" onClick="fight(id)">Défendre</button>
+          <div id="yourHealth"> <div id="vie_personnage"> </div></div>
+          <p id="pv"> </p>
+            </div>
+               <div id="info">
+            <div id="nom">{{personnage.nom}}</div>
+            <div id="poids">{{personnage.poids}}</div>
+            <div id="taille">{{personnage.taille}}</div>
+            <div id="vie">{{personnage.vie}}</div>
+            <div id="attaque">{{personnage.attaque}}</div>
+            <div id="defense">{{personnage.defense}}</div>
+            <div id="agilite">{{personnage.agilite}}</div>
             </div>
         </div>
-      <div class="centre">
+       
+      <div id="centre">
+      
         <h1> VS </h1>
 
-       <button id="tour" type="button">Tour suivant!</button>
      </div>
         <div class="mons combattant">
             <div class="image">
                 <img  id="monstre" src={{monstre.photo}}>
-           
-            <div class="vie">
-                <p id="vie_monstre" width=(({{vieactuelleM}}/{{monstre.vie}})*100)%> {{vieactuelleM}}/{{monstre.vie}} </p>
-                 </div>
+        <div id="compHealth"><div id="vie_monstre"></div></div>
+           <p id="pvm"></p> 
+            </div>
+            <div id="infoM">
+            <div id="nomM">{{monstre.nom}}</div>
+            <div id="poidsM">{{monstre.poids}}</div>
+            <div id="tailleM">{{monstre.taille}}</div>
+            <div id="vieM">{{monstre.vie}}</div>
+            <div id="attaqueM">{{monstre.attaque}}</div>
+            <div id="defenseM">{{monstre.defense}}</div>
+            <div id="agiliteM">{{monstre.agilite}}</div>
             </div>
         </div>
     </div>
-  <div class="log">
-        <p>
-        Tour 1 : p attaque monstre 
-          <br>
-            Tour 2 : monstre attaque p 
-        
-         {{premier.nom}} commence et inflige {{premier.attaque}} dégat à son adversaire</br>
-         Le combat a duré {{nbtour}} tours </br>
-         Le gagnant est {{gagnant.nom}}
-        </p>
+  <div id="announcements" >
+    
     </div>
 
+<script> 
 
-<script type="text/javascript" src="../../src/views/js/combat.js"></script>"> 
+var yourMove;
+var compMove;
+var savedCompMove;
+var yourHealth = document.getElementById("vie").textContent;
+var compHealth = document.getElementById("vieM").textContent;
+var pv=yourHealth;
+var pvm=compHealth;
+
+var totRounds = 0;
+
+
+var res;
+var playByPlay = document.getElementById('announcements');
+var yourHealthBar = document.getElementById('vie_personnage');
+var compHealthBar = document.getElementById('vie_monstre');
+var attackButton = document.getElementById('attack');
+var counterButton = document.getElementById('counter');
+var playAgain = document.getElementById('playAgain');
+let attaque = Math.round((document.getElementById("attaque").textContent * document.getElementById("poids").textContent) / document.getElementById("taille").textContent) ;
+let attaquem= Math.round((document.getElementById("attaqueM").textContent * document.getElementById("poidsM").textContent) / document.getElementById("tailleM").textContent);
+
+
+function enableButtons() {
+	attackButton.disabled = false;
+	counterButton.disabled = false;
+}
+
+function fight(id) {
+	addRound();
+	compMove(id);
+	healthChange();
+	gameOver();
+}
+
+function addRound() {
+	totRounds += 1;
+}
+
+function counter(y, c) {
+	var move = Math.floor((Math.random()*5));
+	if (move >= 3 && y === 'attack') {
+		res = 'La défense du monstre est réussi! Ton peronnage prends 10 dégats!';
+		yourHealth -= 10;
+	} else if (move >= 3 && y === 'counter') {
+		res = ' Ta défense est réussie, le monstre prend 10 dégats!';
+		compHealth -= 10;
+	} else if (move < 3 && y === 'attack') {
+		res = 'Le monstre n\'arrive pas a se protéger! Tu inflige '+attaque + ' dégats!' ;
+		compHealth -= attaque;
+	} else if (move < 3 && y === 'counter') {
+		res = 'Tu n\'as pas réussi a te défendre ! Tu subit ' + attaquem + ' dégats!';
+		yourHealth -= attaquem;
+	}
+
+}
+function roundResults(res) {
+playByPlay.innerHTML += res + "<br>";
+}
+
+function healthChange() {
+	yourHealthBar.style.width = yourHealth + "%";
+	compHealthBar.style.width =  compHealth + "%";
+  document.getElementById("pv").innerHTML = yourHealth+"/"+ pv;  
+  document.getElementById("pvm").innerHTML = compHealth+"/"+ pvm;  
+}
+function again(){
+    var x = document.createElement("BUTTON");
+  var t = document.createTextNode("Rejouer");
+  x.appendChild(t);
+  document.getElementById("centre").appendChild(x);
+  document.getElementById("centre").addEventListener("click", event => {
+ window.location="https://webetu.iutnc.univ-lorraine.fr/www/farruggi5u/dd8/Super_Street_Dora_Grand_Championship_Turbo/public/index.php/choisir";
+})
+
+}
+function gameOver() {
+    res="";
+	if (yourHealth === 0 || compHealth === 0) {
+        if(yourHealth ===0 ){
+	res = 'Vous avez perdu!';
+    again();
+        }else{
+            	res = 'Vous avez gagnez!';
+                  again();
+        }
+		roundResults(res);
+		attackButton.disabled = true;
+		counterButton.disabled = true;
+	}
+}
+
+function compMove(id) {
+	var move = Math.floor((Math.random()*4)+1);
+	if (move <= 3) {
+		savedCompMove =  'attack';
+	} else {
+		savedCompMove = 'counter';
+	};
+	res = ('Ton move  est <span>'+ id + '</span> et  le move du monstre est <span>' + savedCompMove + '</span> sur le round ' + totRounds);
+	damageStep(id, savedCompMove);
+	roundResults(res);
+
+}
+
+
+
+function damageStep(y, c) {
+	if ( y === 'attack' && c === 'attack') {
+		res = 'Vous avez tout les deux pris des dégats';
+		if (compHealth >= 10 && yourHealth >= 10) {
+			compHealth -= attaque;
+			yourHealth -= attaquem;
+		} else {
+			    if(yourHealth ===0 ){
+	yourHealth=0;
+        }else{
+            compHealth=0;
+        }
+		}
+	} else if ( y === 'counter' && c === 'counter') {
+		res = 'Tu as pris ta posture défensive en vain';
+	} else if ( y === 'attack' && c === 'counter') {
+		res = 'Le monstre prends une posture défensive et prépare à contre-attaquer';
+		counter(y, c);
+	} else if ( y === 'counter' && c === 'attack') {
+		res = 'Tu prends une posture défensive et prépare à contre-attaquer';
+		counter(y, c);
+	}
+}
+
+
+window.onload=enableButtons();
+</script>
 
 
 {% endblock  %}
