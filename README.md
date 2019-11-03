@@ -1,4 +1,4 @@
-Nom du projet : Super_Street_Dora_Grand_Championship_Turbo
+Nom du projet : Super Street Dora Grand Championship Turbo
 
 Contributeurs : Victor Vancoille, Théo Helf, Thomas Farruggia, (Nicolas Benni --> Absent, aucun travail fourni)
 
