@@ -1,7 +1,9 @@
 Nom du projet : Super_Street_Dora_Grand_Championship_Turbo
+
 Contributeurs : Victor Vancoille, Théo Helf, Thomas Farruggia, (Nicolas Benni --> Absent, aucun travail fourni)
 
 Accès administateur : Login : Admin / Mdp : Admin 
+
 Url : .../Super_Street_Dora_Grand_Championship_Turbo/public/index.php/ 
 
 Fonctionnalités : 
