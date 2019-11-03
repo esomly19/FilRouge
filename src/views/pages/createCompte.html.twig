@@ -4,14 +4,14 @@
 
 <h1> Création compte </h1>
 				
-	{% if App\controllers\loginController::isConnected %}
+
 
 				<!--path_for('login') -->
 				<form action="{{utilisateurs.id}}"method="post">	
 					<div class="form-group">
 						<label for="pseudo">Pseudo</label>
 						<input type="text" name="pseudo"  id="pseudo" value="{{utilisateurs.pseudo}}" required>
-			
+
 						<label for="mdp">Mot de passe</label>
 						<input type="password" name="mdp" id="mdp" value="{{utilisateurs.mdp}}" required>
 					
@@ -19,6 +19,8 @@
 						<button type="submit" >Valider!</button>
 					</div>
 				</form>
+
+
 
 				
 

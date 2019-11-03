@@ -64,13 +64,13 @@ $app->group('', function() {
   $this->post('/modifierm{id}', \App\controllers\pagesController::class. ':updateMonstre');
 
   //AFFICHE la liste des combats
-  $app->get('/comb', \App\controllers\pagesController::class . ':liscomb')->setName('liscombat');
-  $app->post('/comb', \App\controllers\pagesController::class . ':liscomb');
+  $this->get('/comb', \App\controllers\pagesController::class . ':liscomb')->setName('liscombat');
+  $this->post('/comb', \App\controllers\pagesController::class . ':liscomb');
 
-  $app->get('/combat{idp}{idm}', \App\controllers\pagesController::class . ':combat')->setName('combat');
+  $this->get('/combat{idp}{idm}', \App\controllers\pagesController::class . ':combat')->setName('combat');
 
-  $this->get('/create/{id}', \App\controllers\loginController::class . ':voir');
-  $this->post('/create/{id}', \App\controllers\loginController::class . ':creerUtilisateur');
+  $this->get('/create', \App\controllers\loginController::class . ':voir');
+  $this->post('/create', \App\controllers\loginController::class . ':creerUtilisateur')->setName('creercompte');
 })/*->add(new AuthMiddleware($container))*/;
 /**
  * le middleware génére des erreurs meme dans le cas ou on est connecte 

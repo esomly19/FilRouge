@@ -79,7 +79,8 @@ class loginController
         $password = $_POST["mdp"].self::salt;
         $user->mdp = password_hash($password, PASSWORD_DEFAULT);
         $user->save();
-	 $this->container->view->render($response, 'pages/createCompte.html.twig', ['utilisateurs'=>$user]);
+        // $this->container->view->render($response, 'pages/createCompte.html.twig', ['utilisateurs'=>$user]);
+        $this->container->view->render($response, 'pages/confirmNewCompte.html.twig',['utilisateurs'=>$user]);
   }
   
 
